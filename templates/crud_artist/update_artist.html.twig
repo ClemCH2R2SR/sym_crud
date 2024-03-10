@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier Artiste{% endblock %}
+
+{% block body %}
+
+
+    <h2>Modifier</h2>
+    <form action="{{ path('update_artist_process') }}" method="POST">
+        <div class="forms">
+            <div>
+                <input type="text" name="artistId" value="{{ choseArtist.id }}" style="display: none;">
+            </div>
+            <div>
+                <label for="artist_name" >Nom de l'artiste</label>
+                <input id="artist_name" name="artistName" type="text" value="{{ choseArtist.name }}">
+            </div>
+            <div>
+                <label for="name_style">Choisir un Style musical :</label>
+                <select  id="name_style" name="styleId">
+                    <option  disabled selected>
+                    {% if choseArtist.style.name is defined %}
+                    {{ choseArtist.style.name }}
+                    {% endif %}
+                    </option>
+                    {% for style in styles %}
+                        <option value="{{ style.id }}">{{ style.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="artist_picture">Photo de l'artiste</label>
+                <input id="artist_picture" name="artistPicture" type="file">
+            </div>
+            <div>
+                <button type="submit">SAUVEGARDER</button>
+            </div>
+        </div>
+    </form>
+
+    {% if successMessage is defined %}
+        <p class="success">{{ successMessage }}</p>
+    {% endif %}
+
+
+    {% if errorMessage is defined %}
+        <p class="error">{{ errorMessage }}</p>
+    {% endif %}
+
+{% endblock %}

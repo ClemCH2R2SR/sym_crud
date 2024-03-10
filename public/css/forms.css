@@ -1,0 +1,19 @@
+.admin-nav{
+    /* display: flex !important; */
+    justify-content: space-around !important;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+}
+
+.success{
+    font-weight: bolder;
+    color: darkgreen;
+}
+
+.error{
+    font-weight: bolder;
+    color: darkred;
+}

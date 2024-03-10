@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<h1>CECI EST MA PAGE D'AUTHENTIFICATION</h1>
+
+<form action="{{ path('login_process') }}" method="POST">
+<label for="username">Pseudo</label>
+<input type="text" name="username">
+<button type="submit">Se Connecter</button>
+</form>
+{% endblock %}

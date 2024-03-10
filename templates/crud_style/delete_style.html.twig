@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Supprimer Style{% endblock %}
+
+{% block body %}
+
+
+    <h2>Supprimer</h2>
+    <form action="{{ path('delete_style_process') }}" method="POST">
+        <div class="forms">
+            <div>
+            <label for="name_style">Choisir un style musical :</label>
+            <select id="name_style" name="styleId">
+                <option  disabled selected>Selectionner</option>
+                {% for style in styles %}
+                <option value="{{ style.id }}">{{ style.name }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div>
+                <button type="submit">SUPPRIMER</button>
+            </div>
+        </div>
+    </form>
+
+    {% if successMessage is defined %}
+        <p class="success">{{ successMessage }}</p>
+    {% endif %}
+
+
+    {% if errorMessage is defined %}
+        <p class="error">{{ errorMessage }}</p>
+    {% endif %}
+
+{% endblock %}

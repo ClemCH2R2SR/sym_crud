@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Admin Artistes{% endblock %}
+
+{% block body %}
+<h1>CECI EST MA PAGE D'ADMINISTRATION DES ARTISTES</h1>
+
+<div class="admin-nav">
+    <div>
+        <a href="{{ path('create_artist') }}">
+            <h2>CREER</h2>
+        </a>
+    </div>
+    <div>
+        <a href="{{ path('choose_update_artist_process') }}">
+            <h2>MODIFIER</h2>
+        </a>
+    </div>
+    <div>
+        <a href="{{ path('delete_artist') }}">
+            <h2>SUPPRIMER</h2>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Admin Albums{% endblock %}
+
+{% block body %}
+<h1>CECI EST MA PAGE D'ADMINISTRATION DES ALBUMS</h1>
+
+<div class="admin-nav">
+    <div>
+        <a href="{{ path('create_album') }}">
+            <h2>CREER</h2>
+        </a>
+    </div>
+    <div>
+        <a href="{{ path('choose_album') }}">
+            <h2>MODIFIER</h2>
+        </a>
+    </div>
+    <div>
+        <a href="{{ path('delete_album') }}">
+            <h2>SUPPRIMER</h2>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

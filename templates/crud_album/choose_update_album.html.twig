@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Admin Albums{% endblock %}
+
+{% block body %}
+<h1>CHOISIR L'ALBUM A MODIFIER</h1>
+
+    <form action="{{ path('update_album') }}" method="POST">
+        <div class="forms">
+            <div>
+            <label for="name_album">Choisir l'album à modifier :</label>
+            <select id="style" id="name_album" name="albumId">
+                <option  disabled selected>Selectionner</option>
+                {% for album in albums %}
+                <option value="{{ album.id }}">{{ album.name }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div>
+                <button type="submit">SELECTIONNER</button>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}

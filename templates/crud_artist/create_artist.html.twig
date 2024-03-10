@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Creer Artiste{% endblock %}
+
+{% block body %}
+
+
+    <h2>Créer</h2>
+    <form action="{{ path('create_artist_process') }}" method="POST" enctype="multipart/form-data">
+        <div class="forms">
+            <div>
+                <label for="artist_name">Nom de l'artiste</label>
+                <input type="text" id="artist_name" name="artist_name">
+            </div>
+            <div>
+                <label for="style_name">Choisir un Style :</label>
+                <select  id="style_name" name="style_id">
+                    {% for style in styles %}
+                        <option value="{{ style.id }}">{{ style.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="artist_picture">Photo de L'artiste</label>
+                <input type="file" id="artist_picture" name="artist_picture">
+            </div>
+            <div>
+                <button type="submit">CREER</button>
+            </div>
+        </div>
+    </form>
+
+
+    {% if successMessage is defined %}
+        <p class="success">{{ successMessage }}</p>
+    {% endif %}
+
+
+    {% if errorMessage is defined %}
+        <p class="error">{{ errorMessage }}</p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1>CECI EST MA PAGE D'ADMINISTRATION</h1>
+
+<a href="{{ path('admin_artists') }}">Gestion Artistes</a>
+
+<br/>
+
+<a href="{{ path('admin_albums') }}">Gestion Albums</a>
+
+<br/>
+
+<a href="{{ path('admin_styles') }}">Gestion Styles</a>
+
+{% endblock %}

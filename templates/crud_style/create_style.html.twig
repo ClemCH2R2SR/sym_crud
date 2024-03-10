@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Creer Style{% endblock %}
+
+{% block body %}
+
+
+    <h2>Créer</h2>
+    <form action="{{ path('create_style_process') }}" method="POST">
+        <div class="forms">
+            <div>
+                <label for="style_name">Nom du style</label>
+                <input type="text" id="style_name" name="name">
+            </div>
+            <div>
+                <button type="submit">CREER</button>
+            </div>
+        </div>
+    </form>
+
+
+    {% if successMessage is defined %}
+        <p class="success">{{ successMessage }}</p>
+    {% endif %}
+
+
+    {% if errorMessage is defined %}
+        <p class="error">{{ errorMessage }}</p>
+    {% endif %}
+
+
+
+{% endblock %}

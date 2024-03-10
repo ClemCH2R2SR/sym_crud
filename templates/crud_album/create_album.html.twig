@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Creer Album{% endblock %}
+
+{% block body %}
+
+
+    <h2>Créer</h2>
+    <form action="{{ path('create_album_process') }}" method="POST" enctype="multipart/form-data">
+        <div class="forms">
+            <div>
+                <label for="album_name">Nom de l'album</label>
+                <input type="text" id="album_name" name="album_name">
+            </div>
+            <div>
+                <label for="artist_name">Choisir un Artiste :</label>
+                <select  id="artist_name" name="artist_id">
+                    {% for artist in artists %}
+                        <option value="{{ artist.id }}">{{ artist.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="release_year">Année de sortie</label>
+                <input type="text" id="release_year" name="release_year">
+            </div>
+            <div>
+                <label for="cover">Cover</label>
+                <input type="file" id="cover" name="cover">
+            </div>
+            <div>
+                <button type="submit">CREER</button>
+            </div>
+        </div>
+    </form>
+
+    {% if successMessage is defined %}
+        <p class="success">{{ successMessage }}</p>
+    {% endif %}
+
+
+    {% if errorMessage is defined %}
+        <p class="error">{{ errorMessage }}</p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Artists{% endblock %}
+
+{% block body %}
+<h1>CECI EST MA PAGE DES ARTISTES</h1>
+
+<div class="container">
+    <div class="row">
+      {% for artist in artists %}
+         <div class="card" style="width: 18rem;">
+        <img src="{{ artist.picture }}" class="card-img-top" alt="image_artist">
+        <div class="card-body">
+            <h5 class="card-title">{{ artist.name }}</h5>
+            <a href="{{ path('artist_one', {'id': artist.id}) }}" class="btn btn-primary">Voir l'artiste</a>
+        </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

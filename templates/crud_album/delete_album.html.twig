@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Supprimer Album{% endblock %}
+
+{% block body %}
+
+    <h2>Supprimer</h2>
+    <form action="{{ path('delete_album_process') }}" method="POST">
+        <div class="forms">
+            <div>
+                <label for="album">Choisir un Album :</label>
+                <select  id="album" name="albumId">
+                    <option  disabled selected></option>
+                    {% for album in albums %}
+                        <option value="{{ album.id }}">{{ album.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <button type="submit">SUPPRIMER</button>
+            </div>
+        </div>
+    </form>
+
+    {% if successMessage is defined %}
+        <p class="success">{{ successMessage }}</p>
+    {% endif %}
+
+
+    {% if errorMessage is defined %}
+        <p class="error">{{ errorMessage }}</p>
+    {% endif %}
+
+{% endblock %}

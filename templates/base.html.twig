@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    </head>
+    <body>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <div>Jupiter's blog</div>
+                <div class="navbar1">
+                    <a href="{{ path('index') }}">Accueil</a>
+                    <a href="{{ path('artist_all') }}">Artistes</a>
+                    {% if app.session.get('username') is not null and app.session.get('role') == 'ROLE_ADMIN'%}
+                    <a href="{{ path('admin') }}">ADMIN</a>
+                    {% endif %}
+
+                </div>
+                <div>
+                    {% if app.session.get('username') is not null %}
+                    <p>{{ app.session.get('username') }}</p>
+                    <a href="{{ path('logout') }}">Déconnexion</a>
+                    {% else %}
+                    <a href="{{ path('login') }}">Connexion</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        {% block body %}{% endblock %}
+        {% block footer %}{% include 'footer.html.twig' %}{% endblock %}
+    </body>
+</html>

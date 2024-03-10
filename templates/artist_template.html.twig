@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1>CECI EST MA PAGE DE TEMPLATES DES ARTISTES</h1>
+
+<div>
+{# <img src="{{ path(artist.picture) }}" alt="artiste_picture"> #}
+<h2>{{ artist.name }}</h2>
+<p>style: {{ artist.style.name }}</p>
+</div>
+
+<div>
+<h3>Albums</h3>
+<ul>
+{% for  album in artist.albums %}
+<li>{{ album.name }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<div>
+<h3>Artistes similaires</h3>
+<ul>
+{% for artist in similarArtists %}
+<li>{{ artist.name }}</li>
+{% endfor %}
+</ul>
+</div>
+
+{% endblock %}
